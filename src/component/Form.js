@@ -22,17 +22,28 @@ const [full,setFull]=useState(false)
         if(words.length<3){
                setWords([...words,word])
              setWord("")
-        }else{
+        }
+        if(words.length===2){
             setMessage("now you may click on show me messsage")
+            setTimeout(() => {
+                setMessage("")
+            }, 3000);
+            setWord("")
         }
      
 
 
     }
- const  wordChange=(event)=>{
+ const showMessage=()=>{
 
-         const{name,checked} = event.target;
-    
+        if(words.length<3){
+        setMessage("please add atleast 3 words")
+        setTimeout(() => {
+            setMessage("")
+        }, 2000);
+        }else{
+            setFull(true)
+        }
  
         
     }
@@ -44,8 +55,7 @@ return(
 <article>
     <h1>Generate Password</h1>
     
-    
-    <form onSubmit={handleSubmit} className="flex">
+    {full? <h1>done</h1>:    <form onSubmit={handleSubmit} className="flex">
  
         <div className="container">
   
@@ -57,11 +67,13 @@ return(
         </div>
 
        <div className="button">   
-        <button onClick={wordChange}>Shwo me the Message</button>
+       <p>{message}</p>
+        <button onClick={showMessage}>Shwo me the Message</button>
         <button onClick={AddWord}>Add new word</button>
         </div>
   </div>
-    </form>
+    </form> }
+ 
 </article>
 )
     }
