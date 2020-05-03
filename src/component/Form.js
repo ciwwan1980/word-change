@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import MainScreen from "./MainScreen"
 
 
 function Form (){
@@ -9,12 +10,9 @@ const [word,setWord]=useState("")
 const [full,setFull]=useState(false)
 const [btn,setBtn]=useState(false)
 
-
-
     // FormMethods
     const handleSubmit=(event)=>{
         event.preventDefault();
-      
       
     }
 
@@ -32,9 +30,7 @@ const [btn,setBtn]=useState(false)
             }, 3000);
             setWord("")
         }
-     
-
-
+    
     }
  const showMessage=()=>{
 
@@ -49,15 +45,13 @@ const [btn,setBtn]=useState(false)
  
         
     }
-
-
  
 return(
 
 <article>
     <h1>Generate Password</h1>
     
-    {full? <h1>done</h1>:    <form onSubmit={handleSubmit} className="flex">
+    {full? <MainScreen words={words}/>:<form onSubmit={handleSubmit} className="flex">
  
         <div className="container">
   
