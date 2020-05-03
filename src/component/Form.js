@@ -4,6 +4,11 @@ import React,{useState} from 'react';
 function Form (){
 
 const [message,setMessage]=useState("")
+const [words,setWords]=useState([])
+const [word,setWord]=useState("")
+const [full,setFull]=useState(false)
+
+
 
     // FormMethods
     const handleSubmit=(event)=>{
@@ -12,9 +17,15 @@ const [message,setMessage]=useState("")
       
     }
 
-    const  messageChange=(event)=>{
+    const  AddWord=()=>{
 
-        const {name,value} = event.target;
+        if(words.length<3){
+               setWords([...words,word])
+             setWord("")
+        }else{
+            setMessage("now you may click on show me messsage")
+        }
+     
 
 
     }
@@ -42,12 +53,12 @@ return(
         <label>Add word </label>
         </div>
         <div className="input">
-        <input name="message" value={message} />
+        <input name="message" value={word} onChange={(e)=>setWord(e.target.value)} />
         </div>
 
        <div className="button">   
-        <button onChange={wordChange}>Shwo me the Message</button>
-        <button onChange={messageChange}>Add new word</button>
+        <button onClick={wordChange}>Shwo me the Message</button>
+        <button onClick={AddWord}>Add new word</button>
         </div>
   </div>
     </form>
