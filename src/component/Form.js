@@ -7,6 +7,7 @@ const [message,setMessage]=useState("")
 const [words,setWords]=useState([])
 const [word,setWord]=useState("")
 const [full,setFull]=useState(false)
+const [btn,setBtn]=useState(false)
 
 
 
@@ -25,6 +26,7 @@ const [full,setFull]=useState(false)
         }
         if(words.length===2){
             setMessage("now you may click on show me messsage")
+            setBtn(true)
             setTimeout(() => {
                 setMessage("")
             }, 3000);
@@ -68,8 +70,8 @@ return(
 
        <div className="button">   
        <p>{message}</p>
-        <button onClick={showMessage}>Shwo me the Message</button>
-        <button onClick={AddWord}>Add new word</button>
+        <button onClick={showMessage} >Shwo me the Message</button>
+        <button onClick={AddWord} disabled={btn}>Add new word</button>
         </div>
   </div>
     </form> }
