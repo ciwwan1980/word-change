@@ -49,7 +49,7 @@ const [btn,setBtn]=useState(false)
 return(
 
 <article>
-    <h1>Generate Password</h1>
+    <h1>Add a Message</h1>
     
     {full? <MainScreen words={words}/>:<form onSubmit={handleSubmit} className="flex">
  
@@ -65,7 +65,7 @@ return(
        <div className="button">   
        <p>{message}</p>
         <button onClick={showMessage} >Shwo me the Message</button>
-        <button onClick={AddWord} disabled={btn}>Add new word</button>
+        <button onClick={AddWord}>Add new word</button>
         </div>
   </div>
     </form> }
